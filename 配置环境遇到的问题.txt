@@ -1,0 +1,21 @@
+安装opencv2.4.9
+
+cmake错误
+CMake Error at cmake/OpenCVDetectCXXCompiler.cmake:85 (list):
+  list GET given empty list
+Call Stack (most recent call first):
+  CMakeLists.txt:77 (include)
+解决：https://answers.opencv.org/question/65548/cmake-error-at-cmakeopencvdetectcxxcompilercmake/
+
+make错误
+/home/pi/opencv-2.4.9/modules/contrib/src/chamfermatching.cpp:969:30: error: the compiler can assume that the address of ‘annotate_img’ will never be NULL [-Werror=address]
+解决：https://blog.csdn.net/m0_38024766/article/details/78715016?utm_source=blogxgwz2
+
+最终执行的cmake命令：
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_PERF_TESTS=OFF -DBUILD_opencv_gpu=OFF -DBUILD_opencv_ocl=OFF -DENABLE_PRECOMPILED_HEADERS=OFF
+
+为python3安装opencv2.4.9
+cmake -D BUILD_opencv_python3=YES -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D PYTHON3_LIBRARIES=/usr/lib/arm-linux-gnueabihf/libpython3.7m.so -D PYTHON3_NUMPY_INCLUDE_DIRS=/home/pi/.local/lib/python3.7/site-packages/numpy/core/include/ 
+
+cmake -D BUILD_opencv_python3=YES -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D PYTHON3_EXECUTABLE=/usr/bin/python3 -D PYTHON_INCLUDE_DIR=/usr/include/python3.7 -D PYTHON_INCLUDE_DIR2=/usr/include/arm-linux-gnueabihf/python3.7m -D PYTHON3_LIBRARIES=/usr/lib/arm-linux-gnueabihf/libpython3.7m.so -D PYTHON3_NUMPY_INCLUDE_DIRS=/home/pi/.local/lib/python3.7/site-packages/numpy/core/include/
+
